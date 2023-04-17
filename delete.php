@@ -29,7 +29,7 @@ if ($status == false) {
     $error = $stmt->errorInfo();
     exit("ErrorQuery:".$error[2]);
 } else {
-    redirect('select.php');
+    redirect('myregistry.php');
 }
 
 

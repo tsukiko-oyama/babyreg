@@ -34,18 +34,17 @@ if($status==false) {
   //Selectデータの数だけ自動でループしてくれる
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-
     $view .= '<p>カテゴリ：'.$result['category'].'｜ブランド：'.$result['brand'].'</p>';
     $view .= '<p> 商品名：'.$result['category'].'</p>';
     $view .= '<p> 詳細：'.$result['detail'].'</p>';
     $view .= '<p> 参考価格：'.$result['price'].'円</p>';
-    $view .= '<p>'.' <a href='.$result['website'].'>'.'参考ウェブサイト'.'</a></p>';
-    $view .=  '<p>'.$result['given'].'</p>' ;
-    $view .= '<a href="detail.php?id=' . $result['id'] . '">';
-    $view .= '[編集]'.'</a>';
-    $view .= '<a href="delete.php?id=' . $result['id'] . '">';
-    $view .= '[削除]'.'</a>';
+    $view .= '<p>'.'参考ウェブサイト：'.' <a href='.$result['website'].'>'.$result['website'].'</a></p>';
+    $view .= '<a href="presentdetail.php?id=' . $result['id'] . '">';
+    $view .= '[プレゼントする]';
+    $view .= '</a>'.$result['given'];;
     $view .= '</p>';
+
+
   }
 
 }
@@ -58,7 +57,7 @@ if($status==false) {
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Registry</title>
+<title>ベビーレジストリ</title>
 <link rel="stylesheet" href="css/range.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style>div{padding: 10px;font-size:16px;}</style>
@@ -66,7 +65,7 @@ if($status==false) {
 <body id="main">
 <!-- Head[Start] -->
 <header>
-<nav class="navbar" style="background-color: #fff;">
+  <nav class="navbar" style="background-color: #fff;">
     <div class="container-fluid">
     <div class="navbar-header"><a class="navbar-brand" href="home.php">
     <img src="./image/logo.jpg" alt="iwai_babyregistry" width="160" height="70"></a></div>
@@ -78,14 +77,14 @@ if($status==false) {
     </div>
   </nav>
 </header>
+
 <!-- Head[End] -->
 
 <!-- Main[Start] -->
 <div>
-    <div class="container jumbotron text-center" >
-      <h2><?= $search_name.'のレジストリ' ?></h2>
-      <a href="index.php"style="color: black;">レジストリにアイテムを追加する</a>
-      <div style="color:black;"><?= $view ?></div>
+    <div class="container jumbotron text-center">
+    <h2>  <?= $search_name.'のレジストリへようこそ' ?></h2>
+      <?= $view ?>
     </div>
 </div>
 <!-- Main[End] -->

@@ -25,7 +25,7 @@ $stmt->bindValue(':item', $item, PDO::PARAM_STR);
 $stmt->bindValue(':detail', $detail, PDO::PARAM_STR);
 $stmt->bindValue(':price', $price, PDO::PARAM_INT);
 $stmt->bindValue(':website', $website, PDO::PARAM_STR);
-$stmt->bindValue(':id', $price, PDO::PARAM_INT);
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 //４．データ登録処理後
@@ -34,5 +34,5 @@ if ($status == false) {
     $error = $stmt->errorInfo();
     exit("ErrorQuery:".$error[2]);
 } else {
-    redirect('select.php');
+    redirect('myregistry.php');
 }

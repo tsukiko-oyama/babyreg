@@ -39,7 +39,7 @@ if ($status == false) {
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>アイテムの編集</title>
+  <title>プレゼントする</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>div{padding: 10px;font-size:16px;}</style>
 </head>
@@ -62,17 +62,13 @@ if ($status == false) {
 <!-- Head[End] -->
 
 <!-- Main[Start] -->
-<form method="POST" action="update.php">
-  <div class="container jumbotron text-center">
+<form method="POST" action="presentupdate.php">
+  <div class="jumbotron">
    <fieldset>
-    <h2>アイテムの編集</h2>
-     <label>カテゴリー<input type="text" name="category" value="<?= $result['category'] ?>"></label><br>
-     <label>ブランド<input type="text" name="brand" value="<?= $result['brand'] ?>"></label><br>
-     <label>商品名<input type="text" name="item" value="<?= $result['item'] ?>"></label><br>
-     <label>詳細<textArea name="detail" rows="4" cols="40" ><?= $result['detail'] ?></textArea></label><br>
-     <label>価格<input type="number" name="price" value="<?= $result['price'] ?>"></label><br>
-     <label>参考ウェブサイト<input type="text" name="website" value="<?= $result['website'] ?>"></label><br>
-
+    <legend>プレゼントする</legend>
+     <label>あなたの名前<input type="text" name="givername"></label><br>
+     <label>メッセージ<textArea name="givermessage" rows="4" cols="40"></textArea></label><br> 
+     <input type="hidden" name="given" value="[すでに誰かがプレゼントされています]">
      <input type="hidden" name="id" value="<?= $result['id']?>">
      <input type="submit" value="送信">
     </fieldset>

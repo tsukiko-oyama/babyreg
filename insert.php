@@ -44,6 +44,6 @@ if($status==false){
   exit("ErrorMessage:".$error[2]);
 }else{
 // index.phpへリダイレクト
-  header('Location: index.php');
+  header('Location: myregistry.php');
 }
 ?>
