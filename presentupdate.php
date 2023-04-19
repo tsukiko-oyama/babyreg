@@ -13,7 +13,7 @@ $pdo = db_conn();
 
 //３．データ更新SQL作成（UPDATE テーブル名 SET 更新対象1=:更新データ ,更新対象2=:更新データ2,... WHERE id = 対象ID;）
 $stmt = $pdo->prepare(
-    "UPDATE `baby_regdetail_table` SET givername=:givername, givermessage=:givermessage,given=:given WHERE id=:id"
+    "UPDATE `baby_regdetail_table` SET givername=:givername, givermessage=:givermessage,given=:given,giverdate=sysdate() WHERE id=:id"
   );
 $stmt->bindValue(':givername', $givername, PDO::PARAM_STR);
 $stmt->bindValue(':givermessage', $givermessage, PDO::PARAM_STR);

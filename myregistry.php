@@ -34,18 +34,20 @@ if($status==false) {
   //Selectデータの数だけ自動でループしてくれる
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-
+    $view .= '<div class="container text-center" >';
     $view .= '<p>カテゴリ：'.$result['category'].'｜ブランド：'.$result['brand'].'</p>';
     $view .= '<p> 商品名：'.$result['category'].'</p>';
     $view .= '<p> 詳細：'.$result['detail'].'</p>';
     $view .= '<p> 参考価格：'.$result['price'].'円</p>';
     $view .= '<p>'.' <a href='.$result['website'].'>'.'参考ウェブサイト'.'</a></p>';
-    $view .=  '<p>'.$result['given'].'</p>' ;
+    $view .= empty($result['given']) ? ''
+     : $result['givername'].'さんがプレゼント予定です<br>メッセージ:'.
+     '"'.$result['givermessage'].'"('.$result['giverdate'].')';
     $view .= '<a href="detail.php?id=' . $result['id'] . '">';
     $view .= '[編集]'.'</a>';
     $view .= '<a href="delete.php?id=' . $result['id'] . '">';
     $view .= '[削除]'.'</a>';
-    $view .= '</p>';
+    $view .= '</p></div>';
   }
 
 }
@@ -84,7 +86,7 @@ if($status==false) {
 <div>
     <div class="container jumbotron text-center" >
       <h2><?= $search_name.'のレジストリ' ?></h2>
-      <a href="index.php"style="color: black;">レジストリにアイテムを追加する</a>
+      <h3><a href="index.php"style="color: black;">[レジストリにアイテムを追加する]</a></h3>
       <div style="color:black;"><?= $view ?></div>
     </div>
 </div>

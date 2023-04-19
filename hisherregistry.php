@@ -34,15 +34,14 @@ if($status==false) {
   //Selectデータの数だけ自動でループしてくれる
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+    $view .= '<div class="container text-center" >';
     $view .= '<p>カテゴリ：'.$result['category'].'｜ブランド：'.$result['brand'].'</p>';
     $view .= '<p> 商品名：'.$result['category'].'</p>';
     $view .= '<p> 詳細：'.$result['detail'].'</p>';
     $view .= '<p> 参考価格：'.$result['price'].'円</p>';
-    $view .= '<p>'.'参考ウェブサイト：'.' <a href='.$result['website'].'>'.$result['website'].'</a></p>';
-    $view .= '<a href="presentdetail.php?id=' . $result['id'] . '">';
-    $view .= '[プレゼントする]';
-    $view .= '</a>'.$result['given'];;
-    $view .= '</p>';
+    $view .= '<p>'.' <a href='.$result['website'].'>'.'参考ウェブサイト'.'</a></p>';
+    $view .= empty($result['given']) ? '<a href="presentdetail.php?id=' . $result['id'] . '">'.'[プレゼントする]'.'</a>' : $result['given'];
+    $view .= '</p></div>';
 
 
   }
@@ -65,7 +64,7 @@ if($status==false) {
 <body id="main">
 <!-- Head[Start] -->
 <header>
-  <nav class="navbar" style="background-color: #fff;">
+  <nav class="navbar fixed-top" style="background-color: #fff;">
     <div class="container-fluid">
     <div class="navbar-header"><a class="navbar-brand" href="home.php">
     <img src="./image/logo.jpg" alt="iwai_babyregistry" width="160" height="70"></a></div>

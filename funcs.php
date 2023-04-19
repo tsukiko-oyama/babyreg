@@ -21,6 +21,19 @@ function db_conn(){
         exit('DB Connection Error:' . $e->getMessage());
     }
 }
+// function db_conn(){
+//   try {
+//     $db_name = "tsukiko-oyama_baby_reg";    //データベース名
+//     $db_id   = "tsukiko-oyama";      //アカウント名
+//     $db_pw   = "MIL_babyreg";      //パスワード：XAMPPはパスワードなしMAMPのパスワードはroot
+//     $db_host = "mysql57.tsukiko-oyama.sakura.ne.jp"; //DBホスト
+//     $db_port = "3306"; //XAMPPの管理画面からport番号確認
+//     $pdo = new PDO('mysql:dbname=' . $db_name . ';charset=utf8;host=' . $db_host.';port='.$db_port.'', $db_id, $db_pw);
+//     return $pdo;//ここを追加！！
+//   } catch (PDOException $e) {
+//       exit('DB Connection Error:' . $e->getMessage());
+//   }
+// }
 
 
 //SQLエラー
